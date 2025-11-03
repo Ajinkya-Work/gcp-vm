@@ -1,0 +1,9 @@
+# terraform.tfvars
+project_id  = "your-gcp-project-id"
+region      = "asia-south1"  # Change the region if needed
+zone        = "asia-south1-a"
+vm_name     = "my-custom-vm"
+machine_type = "n2-standard-4"
+image       = "ubuntu-2404-lts"  # Change to another Ubuntu version if needed
+tags        = ["http-server", "database-server"]
+startup_script = "#!/bin/bash\nsudo apt-get update && sudo apt-get upgrade -y"
