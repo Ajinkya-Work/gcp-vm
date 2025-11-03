@@ -1,9 +1,26 @@
-# terraform.tfvars
-project_id  = "your-gcp-project-id"
-region      = "asia-south1"  # Change the region if needed
-zone        = "asia-south1-a"
-vm_name     = "my-custom-vm"
+# The GCP project ID
+project_id = "your-gcp-project-id"
+
+# The region for deploying the VM
+region = "asia-south1"  # Change the region if needed
+
+# The zone for deploying the VM
+zone = "asia-south1-a"  # Change the zone if needed
+
+# The name of the VM instance
+vm_name = "my-custom-vm"
+
+# The machine type for the VM (n2-standard-4 is the default)
 machine_type = "n2-standard-4"
-image       = "ubuntu-2404-lts"  # Change to another Ubuntu version if needed
-tags        = ["http-server", "database-server"]
-startup_script = "#!/bin/bash\nsudo apt-get update && sudo apt-get upgrade -y"
+
+# The boot disk image for the VM (Ubuntu 24.04 LTS in this case)
+image = "ubuntu-2404-lts"  # Change to another Ubuntu version if needed
+
+# Tags for the VM (e.g., to allow HTTP/HTTPS traffic)
+tags = ["http-server", "database-server"]
+
+# Path to the startup script
+startup_script_path = "./startup-script.sh"  # Specify the path to your actual startup script file
+
+# Allowed ports for the firewall (you can change or add more ports)
+allowed_ports = [22, 80, 443]  # Ports for SSH, HTTP, and HTTPS
