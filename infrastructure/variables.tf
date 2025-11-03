@@ -1,5 +1,3 @@
-# variables.tf
-
 # Project ID
 variable "project_id" {
   description = "The GCP project ID."
@@ -47,9 +45,16 @@ variable "tags" {
   type        = list(string)
 }
 
-# Startup script for the VM
-variable "startup_script" {
-  description = "Startup script to run on VM initialization."
-  default     = "#!/bin/bash\nsudo apt-get update && sudo apt-get upgrade -y"
+# Path to the startup script file (use file() function in main.tf to read it)
+variable "startup_script_path" {
+  description = "The path to the startup script file."
   type        = string
+  default     = "./startup-script.sh"  # Default path to the startup script
+}
+
+# Allowed ports array for firewall rules (e.g., 80 for HTTP, 443 for HTTPS, etc.)
+variable "allowed_ports" {
+  description = "Array of ports to be allowed through the firewall."
+  type        = list(number)
+  default     = [22, 80, 443]  # Default ports: SSH, HTTP, and HTTPS
 }

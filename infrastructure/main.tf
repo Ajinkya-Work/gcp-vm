@@ -1,4 +1,3 @@
-# main.tf
 resource "google_compute_instance" "ubuntu_vm" {
   name         = var.vm_name                  # VM name
   machine_type = var.machine_type             # VM machine type
@@ -23,14 +22,24 @@ resource "google_compute_instance" "ubuntu_vm" {
   tags = var.tags                             # Use tags variable
 
   metadata = {
-    startup-script = var.startup_script      # Custom startup script
-  }
-
-  # Enable SSH access
-  provisioner "remote-exec" {
-    inline = [
-      "echo 'Hello, Ubuntu!'"
-    ]
+    startup-script = file(var.startup_script_path)  # Read script content from path
   }
 }
 
+# Firewall rule to allow incoming traffic based on the provided ports array
+resource "google_compute_firewall" "allow_ports" {
+  name    = "allow-custom-ports"
+  network = "default"  # Apply firewall rule to the default network
+
+  dynamic "allow" {
+    for_each = var.allowed_ports
+    content {
+      protocol = "tcp"
+      ports    = [allow.value]
+    }
+  }
+
+  source_ranges = ["0.0.0.0/0"]  # Allow access from anywhere
+
+  target_tags = var.tags  # Apply rule only to instances with these tags
+}
