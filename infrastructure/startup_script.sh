@@ -1,22 +1,17 @@
 #!/bin/bash
+set -euxo pipefail
 
-# Update the apt package list
-sudo apt update -y
+# Wait for apt locks and update packages
+while fuser /var/lib/dpkg/lock >/dev/null 2>&1; do
+  echo "Waiting for apt lock..."
+  sleep 5
+done
 
-# Upgrade all installed packages to the latest version
-sudo apt upgrade -y
+apt-get update -y
+apt-get upgrade -y
+apt-get install -y nginx
 
-# Install NGINX
-sudo apt install  nginx -y
+systemctl enable nginx
+systemctl start nginx
 
-# Start NGINX service
-sudo systemctl start nginx
-
-# Enable NGINX to start on boot
-sudo systemctl enable nginx
-
-# Confirm NGINX is installed and running
-echo "NGINX has been installed and started successfully."
-
-# Display the status of the NGINX service
-sudo systemctl status nginx
+echo "NGINX installed and running successfully" | tee /var/log/startup-script.log

@@ -24,3 +24,4 @@ startup_script_path = "./startup_script.sh"  # Specify the path to your actual s
 
 # Allowed ports for the firewall (you can change or add more ports)
 allowed_ports = [22, 80, 443]  # Ports for SSH, HTTP, and HTTPS
+
