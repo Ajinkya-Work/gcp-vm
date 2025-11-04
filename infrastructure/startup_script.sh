@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Update the apt package list
-sudo apt-get update -y
+sudo apt update -y
 
 # Upgrade all installed packages to the latest version
-sudo apt-get upgrade -y
+sudo apt upgrade -y
 
 # Install NGINX
-sudo apt-get install -y nginx
+sudo apt install  nginx -y
 
 # Start NGINX service
 sudo systemctl start nginx
