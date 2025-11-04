@@ -1,4 +1,4 @@
-// ...existing code...
+
 # gcp-vm
 
 Terraform configuration that provisions a single Google Compute Engine VM and a firewall rule.
