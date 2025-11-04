@@ -1,5 +1,5 @@
 # The GCP project ID
-project_id = "your-gcp-project-id"
+project_id = "solvoxai"
 
 # The region for deploying the VM
 region = "asia-south1"  # Change the region if needed
@@ -8,19 +8,19 @@ region = "asia-south1"  # Change the region if needed
 zone = "asia-south1-a"  # Change the zone if needed
 
 # The name of the VM instance
-vm_name = "my-custom-vm"
+vm_name = "testvm"
 
 # The machine type for the VM (n2-standard-4 is the default)
 machine_type = "n2-standard-4"
 
 # The boot disk image for the VM (Ubuntu 24.04 LTS in this case)
-image = "ubuntu-2404-lts"  # Change to another Ubuntu version if needed
+image = "ubuntu-os-cloud/ubuntu-2404-lts-amd64"  # Change to another Ubuntu version if needed
 
 # Tags for the VM (e.g., to allow HTTP/HTTPS traffic)
 tags = ["http-server", "database-server"]
 
 # Path to the startup script
-startup_script_path = "./startup-script.sh"  # Specify the path to your actual startup script file
+startup_script_path = "./startup_script.sh"  # Specify the path to your actual startup script file
 
 # Allowed ports for the firewall (you can change or add more ports)
 allowed_ports = [22, 80, 443]  # Ports for SSH, HTTP, and HTTPS
