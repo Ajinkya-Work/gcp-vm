@@ -38,4 +38,4 @@ terraform.rc
 
 
 # Ignore service account key files
-/service-account.json
+service-account.json
