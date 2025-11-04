@@ -58,3 +58,4 @@ variable "allowed_ports" {
   type        = list(number)
   default     = [22, 80, 443]  # Default ports: SSH, HTTP, and HTTPS
 }
+
